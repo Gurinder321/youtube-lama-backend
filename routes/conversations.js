@@ -16,21 +16,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// get list of users we have a conversation with
-router.get('/list/:userId', async (req, res) => {
-  try {
-    const conversation = await Conversation.find({
-      members: {
-        $in: [req.params.userId],
-      },
-    });
-    res.status(200).json(conversation);
-    console.log(conversation);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 //get conv of a user
 
 router.get('/:userId', async (req, res) => {
